@@ -16,6 +16,8 @@ import menu_icon from './menu_icon.png'
 import arrow_icon from './arrow_icon.png'
 import green_dot from './green_dot.png'
 import chat_icon from './chat_icon.png'
+import hongle from './hongle.jpg'
+
 const assets = {
     avatar_icon,
     gallery_icon,
@@ -34,7 +36,8 @@ const assets = {
     menu_icon,
     arrow_icon,
     green_dot,
-    chat_icon
+    chat_icon,
+    hongle
 }
 
 export default assets;
