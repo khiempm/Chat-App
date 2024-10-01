@@ -1,6 +1,7 @@
 import React from 'react'
 import './RightSidebar.css'
 import assets from '../../assets/assets'
+import { logout } from '../../config/firebase'
 const RightSidebar = () => {
   return (
     <div className='rs'>
@@ -21,7 +22,7 @@ const RightSidebar = () => {
             <img src={assets.pic3} alt="" />
           </div>
         </div>
-          <button>Return</button>
+          <button onClick={() => logout()}>Return</button>
     </div>
   )
 }
