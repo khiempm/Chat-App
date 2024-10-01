@@ -9,7 +9,7 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from './config/firebase'
 
 const App = () => {
-  const navigate = useNavigate
+  const navigate = useNavigate()
 
   useEffect(() =>{
     onAuthStateChanged(auth, async (user) => {
@@ -27,7 +27,6 @@ const App = () => {
         <Route path='/' element={<Login/>}/>
         <Route path='/Chat' element={<Chat/>} />
         <Route path='/profile' element={<ProfileUpdate/>} />
-
       </Routes>
     </div>
   )
