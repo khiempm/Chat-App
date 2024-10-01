@@ -11,15 +11,20 @@
     justify-content: space-between;
     align-items: center;
 }
+.ls-nav p{
+    flex: 0.9;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif
+}
 
 .ls-nav .logo{
-    max-width: 140px;
+    max-width: 120px;
 }
-.ls-nav .menu img{
-    max-height: 20px;
+/* .ls-nav .menu img{
+    max-height: 25px;
     opacity: 0.6;
     cursor: pointer;
-}
+} */
 .ls-nav img{
     max-height: 50px;
 }
@@ -29,7 +34,7 @@
     align-items: center;
     gap: 10px;
     padding: 10px 12px;
-    margin-top: 20px;
+    margin-top: 7px;
 }
 .ls-search img{
     width: 16px;
@@ -76,5 +81,8 @@
     background-color: #569DAA;
 }
 .friends:hover span{
-    color: black;
+    color: white;
+}
+.friends:hover p{
+    color: #B9EDDD;
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import "./LeftSidebar.css";
 import assets from "../../assets/assets";
+
 const LeftSidebar = () => {
   return (
     <div>
@@ -8,8 +9,9 @@ const LeftSidebar = () => {
         <div className="ls-top">
           <div className="ls-nav">
             <img src={assets.chat_icon} alt="" className="logo" />
+            <p>Chat Page</p>
             <div className="menu">
-              <img src={assets.menu_icon} alt="" />
+              {/* <img src={assets.return_icon} alt="" /> */}
             </div>
           </div>
           <div className="ls-search">
@@ -20,10 +22,10 @@ const LeftSidebar = () => {
         <div className="ls-list">
           {Array(12).fill("").map((item,index) => (
               <div key={index} className="friends">
-                <img src={assets.profile_img} alt="" />
+                <img src={assets.hongle} alt="" />
                 <div>
                   <p>Nguyễn Thị Hồng Lê</p>
-                  <span>Hello Em la Hong Le ngoc</span>
+                  <span>Hello moi nguoi</span>
                 </div>
               </div>
             ))}

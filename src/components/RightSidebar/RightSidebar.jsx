@@ -21,6 +21,7 @@ const RightSidebar = () => {
             <img src={assets.pic3} alt="" />
           </div>
         </div>
+          <button>Return</button>
     </div>
   )
 }
