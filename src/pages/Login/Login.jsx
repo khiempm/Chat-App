@@ -21,7 +21,7 @@ const Login = () => {
 
   return (
     <div className='login'>
-      <img src={assets.logo_big} alt="" className="logo" />
+      {/* <img src={assets.logo_big} alt="" className="logo" /> */}
       <form  onSubmit={onSubmitHandler} className="login-form">
         <h2>{currState}</h2>
         {currState === "Sign up" ?
@@ -30,10 +30,6 @@ const Login = () => {
         <input onChange={(e) => setEmail(e.target.value)} value={email} type="email" placeholder='Email Address' className="form-input" required/>
         <input onChange={(e) => setPassword(e.target.value)} value={password} type="password" placeholder='password' className="form-input" required/>
         <button type='submit'>{currState === "Sign up" ? "Create account" : "Login"}</button>
-        <div className="login-term">
-          <input type="checkbox" />
-          <p>Agree to the term of use & privacy policy. </p>
-        </div>
         <div className="login-forgot">
           {
             currState === "Sign up" ?

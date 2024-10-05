@@ -19,6 +19,7 @@ const ChatBox = () => {
 
   const sendMessage = async () => {
     try {
+      console.log(messagesId);
       if (input && messagesId) {
         await updateDoc(doc(db, "messages", messagesId), {
           messages: arrayUnion({
@@ -31,12 +32,11 @@ const ChatBox = () => {
 
         userIDs.forEach(async (id) => {
           const userChatsRef = doc(db, "chats", id);
-          const userChatsSnapshot = await getDoc(userChatsRef);
-
+          const userChatsSnapshot = await getDoc(userChatsRef);         
           if (userChatsSnapshot.exists()) {
             const userChatData = userChatsSnapshot.data();
             const chatIndex = userChatData.chatsData.findIndex(
-              (c) => c.messageId === messagesId
+              (c) => c.messagesId === messagesId
             );
             userChatData.chatsData[chatIndex].lastMessage = input.slice(0, 30);
             console.log(input.slice(0, 30));
@@ -45,7 +45,7 @@ const ChatBox = () => {
               userChatData.chatsData[chatIndex].messageSeen = false;
             }
             await updateDoc(userChatsRef, {
-              chatsData: userChatData.chatsData,
+              chatsData: userChatData.chatsData
             });
           }
         });
@@ -53,7 +53,7 @@ const ChatBox = () => {
     } catch (error) {
       toast.error(error.message);
     }
-    setInput("");
+    // setInput("");
   };
 
   const convertTimestamp = (timestamp) =>{
@@ -70,7 +70,7 @@ const ChatBox = () => {
   useEffect(() => {
     if (messagesId) {
       const unSub = onSnapshot(doc(db, "messages", messagesId), (res) => {
-        setMessages(res.data().messages.reverse());
+        setMessages(res.data().messages.reverse());      
       });
       return () => {
         unSub();
@@ -91,8 +91,7 @@ const ChatBox = () => {
         {messages.map((msg, index) => (
           <div className={msg.sId === userData.id ? "s-msg" : "r-msg"}>
             <p className="msg">{msg.text}</p>
-            {console.log(msg.text)
-            }
+            {console.log(msg)}
             <div>
               <img src={msg.sId === userData.id ? userData.avatar : chatUser.userData.avatar} alt="" />
               <p>{convertTimestamp(msg.createdAt)}</p>

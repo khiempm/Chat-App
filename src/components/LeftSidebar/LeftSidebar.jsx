@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 
 const LeftSidebar = () => {
   const navigate = useNavigate()
-  const {userData, chatData, messagesId,setMesseagesId,chatUser,setchatUser} =  useContext(AppContext)
+  const {userData, chatData ,chatUser , messagesId, setMessagesId, setChatUser} =  useContext(AppContext)
   const [user, setUser] = useState(null)
   const [showSearch, setShowSearch] = useState(false)
 
@@ -45,10 +45,10 @@ const LeftSidebar = () => {
   }
 
   const addChat= async () => {
-    const messeagesRef = collection(db,"messages")
+    const messagesRef = collection(db,"messages")
     const chatsRef = collection(db,"chats")
     try {
-      const newMessageRef = doc(messeagesRef)
+      const newMessageRef = doc(messagesRef)
 
       await setDoc(newMessageRef,{
         createAt: serverTimestamp(),
@@ -57,7 +57,7 @@ const LeftSidebar = () => {
       
       await updateDoc(doc(chatsRef, user.id),{
         chatsData: arrayUnion({
-          messagesId:newMessageRef.id,
+          messageId:newMessageRef.id,
           lastMessage:"",
           rId:userData.id,
           updatedAt: Date.now(),
@@ -81,8 +81,9 @@ const LeftSidebar = () => {
   }
 
   const setChat = async (item) => {
-    setMesseagesId(item.messageId)
-    setchatUser(item)
+    setMessagesId(item.messageId)
+    console.log(item);        
+    setChatUser(item)
   }
   
   return (

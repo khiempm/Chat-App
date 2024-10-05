@@ -24,7 +24,8 @@ const ProfileUpdate = () => {
       if(!prevImage && !image){
         toast.error("Upload profile picture")
       }
-      const docRef = doc(db,'users', uid)
+      else{
+        const docRef = doc(db,'users', uid)
       if(image){
         const imgUrl = await upload(image)
         setPrevImage(imgUrl)
@@ -43,6 +44,7 @@ const ProfileUpdate = () => {
       const snap = await getDoc(docRef)
       setUserData(snap.data())
       navigate('/Chat')
+      }
     } catch (error) {
       console.error(error)
       toast.error(error.message)
