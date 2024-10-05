@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './ProfileUpdate.css'
 import assets from '../../assets/assets'
 import { onAuthStateChanged } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import upload from '../../lib/upload'
-import { updateDoc } from 'firebase/firestore'
+import { doc, getDoc, updateDoc } from 'firebase/firestore'
+import { auth, db } from '../../config/firebase'
+import { AppContext } from '../../context/AppContext'
 
 const ProfileUpdate = () => {
   const navigate = useNavigate()
@@ -14,6 +16,8 @@ const ProfileUpdate = () => {
   const [bio, setBio] = useState("")
   const [uid, setUid] = useState("")
   const [prevImage, setPrevImage] = useState("")
+  const {setUserData} = useContext(AppContext)
+  
   const profileUpdate = async (event) => {
     event.preventDefault();
     try {
@@ -76,7 +80,7 @@ const ProfileUpdate = () => {
             upload profile image
           </label>
           <input onChange={(e) => setName(e.target.value)} value={name} type="text" placeholder='Your name' required/>
-          <textarea onChange={(e) => setBio(e.target.value)} value={bio} placeholder='Write profile bio'></textarea>
+          <textarea onChange={(e) => setBio(e.target.bio)} value={bio} placeholder='Write profile bio'></textarea>
           <button type='submit'>Save</button>
         </form>
         <img src={image? URL.createObjectURL(image) : prevImage ? prevImage : assets.logo_icon} alt="" className='profile-pic'/>

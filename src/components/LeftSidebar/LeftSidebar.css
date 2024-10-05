@@ -12,19 +12,19 @@
     align-items: center;
 }
 .ls-nav p{
-    flex: 0.9;
-    font-size: 30px;
+    flex: 0.8;
+    font-size: 22px;
     font-family: Arial, Helvetica, sans-serif
 }
 
 .ls-nav .logo{
-    max-width: 120px;
+    max-width: 100px;
 }
-/* .ls-nav .menu img{
-    max-height: 25px;
+.ls-nav .menu img{
+    max-height: 27px;
     opacity: 0.6;
     cursor: pointer;
-} */
+}
 .ls-nav img{
     max-height: 50px;
 }
